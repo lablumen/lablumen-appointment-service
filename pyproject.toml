@@ -1,0 +1,24 @@
+[project]
+name = "appointment-service"
+version = "0.1.0"
+description = "LabLumen appointment-service: scheduling, lab-test catalog, slot-locks. Owns the DB schema."
+requires-python = ">=3.12"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.flake8-bugbear]
+# FastAPI dependency-injection pattern (Depends/Query/Security in defaults) is intentional.
+extend-immutable-calls = ["fastapi.Depends", "fastapi.Query", "fastapi.Security"]
+
+[tool.ruff.lint.per-file-ignores]
+# DDL / seed SQL lines are long by nature.
+"alembic/versions/*" = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

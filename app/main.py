@@ -1,9 +1,10 @@
 from contextlib import asynccontextmanager
 
-from alembic import command
-from alembic.config import Config
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+from alembic import command
+from alembic.config import Config
 
 from .config import settings
 from .routers import appointments, health, lab_tests, patients
